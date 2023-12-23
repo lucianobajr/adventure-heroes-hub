@@ -9,6 +9,9 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      'roboto-slab': ['Roboto Slab', 'sans-serif']
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -18,6 +21,9 @@ module.exports = {
     },
     extend: {
       colors: {
+        main: "#D23A2E",
+        "dark-main": "#942820",
+        "gray-secondary": "#363433",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -70,6 +76,9 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      screens: {
+        'xs': '425px', // Adicione um breakpoint personalizado para telas abaixo de 375px
       },
     },
   },
