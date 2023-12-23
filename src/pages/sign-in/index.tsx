@@ -116,7 +116,7 @@ const SignIn: React.FC = () => {
                                         <FormControl>
                                             <div className='flex flex-col'>
                                                 <Label className='font-roboto-slab font-bold mb-2'>Nickname</Label>
-                                                <Input placeholder="Jhon Doe" {...field} className='h-12 rounded-lg border border-gray-secondary font-roboto-slab text-secondary  placeholder-gray-700 ' />
+                                                <Input placeholder="Jhon Doe" {...field} className='h-12 rounded-lg border border-gray-secondary font-roboto-slab text-gray-secondary  placeholder-gray-700 ' />
                                             </div>
                                         </FormControl>
                                         <FormDescription></FormDescription>
