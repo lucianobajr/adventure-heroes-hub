@@ -74,7 +74,7 @@ const SignIn: React.FC = () => {
 
     return (
         <div className="h-screen w-screen flex">
-            <div className="hidden md:flex flex-col items-center justify-center w-1/2 h-full bg-zinc-200 overflow-x-hidden overflow-y-hidden">
+            <div className="hidden md:flex flex-col items-center justify-center w-1/2 h-full bg-zinc-200 dark:bg-zinc-200 overflow-x-hidden overflow-y-hidden">
                 <motion.div
                     className="w-full h-full lg:h-3/5 flex items-center justify-center"
                     initial={{ opacity: 0 }}
@@ -93,15 +93,15 @@ const SignIn: React.FC = () => {
 
             </div>
             <motion.div
-                className="h-screen w-full md:w-1/2 bg-white flex flex-col items-center justify-center"
+                className="h-screen w-full md:w-1/2 bg-white dark:bg-white flex flex-col items-center justify-center"
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
                 transition={{ duration: 0.5 }}
             >
                 <div className='xs:w-96 w-full xs:p-0 p-2'>
-                    <h1 className='font-roboto-slab font-bold text-4xl text-gray-secondary'>Hora da Batalha!</h1>
-                    <h3 className='text-base mt-3'>Embarque na sua jornada épica. Estávamos esperando por você para viver as maiores aventuras!</h3>
+                    <h1 className='font-roboto-slab font-bold text-4xl text-gray-secondary dark:text-gray-secondary'>Hora da Batalha!</h1>
+                    <h3 className='text-base mt-3 dark:text-black'>Embarque na sua jornada épica. Estávamos esperando por você para viver as maiores aventuras!</h3>
                 </div>
 
                 <div className='xs:w-96 w-full mt-16 xs:p-0 p-2'>
@@ -115,8 +115,8 @@ const SignIn: React.FC = () => {
                                     <FormItem>
                                         <FormControl>
                                             <div className='flex flex-col'>
-                                                <Label className='font-roboto-slab font-bold mb-2'>Nickname</Label>
-                                                <Input placeholder="Jhon Doe" {...field} className='h-12 rounded-lg border border-gray-secondary font-roboto-slab text-gray-secondary  placeholder-gray-700 ' />
+                                                <Label className='font-roboto-slab font-bold mb-2 dark:text-black'>Nickname</Label>
+                                                <Input placeholder="Jhon Doe" {...field} className='h-12 rounded-lg border border-gray-secondary dark:bg-white font-roboto-slab text-gray-secondary dark:text-gray-secondary placeholder-gray-700 ' />
                                             </div>
                                         </FormControl>
                                         <FormDescription></FormDescription>
