@@ -7,7 +7,7 @@ import { useAuth } from "../../contexts/auth/AuthContext";
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-import { FiLogOut, FiUser } from "react-icons/fi"
+import { FiLogOut } from "react-icons/fi"
 
 const Home: React.FC = () => {
 
