@@ -40,10 +40,16 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   });
 
   const signIn = useCallback(({ nickname }: SignInCredentials) => {
-    localStorage.setItem("@AdventureHeroesHub:user", JSON.stringify(nickname));
+    const loggedInUser: User = {
+      nickname
+    }
 
+    // Neste ponto teríamos uma requisição a API ou bbt de autenticação
+    // no caso é simples então só cria um novo user
 
-    setUser({ user: { nickname } });
+    localStorage.setItem("@AdventureHeroesHub:user", JSON.stringify(loggedInUser));
+
+    setUser({ user: loggedInUser });
   }, []);
 
   const signOut = useCallback(() => {

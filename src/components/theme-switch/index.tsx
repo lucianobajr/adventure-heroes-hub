@@ -1,23 +1,19 @@
-import type { FC } from 'react'
-import { useContext } from 'react'
-import ThemeContext from '../../contexts/theme/ThemeContext'
+import type { FC } from 'react';
+import { useContext } from 'react';
+import ThemeContext from '../../contexts/theme/ThemeContext';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 const ThemeSwitch: FC = () => {
-    const { currentTheme, changeCurrentTheme } = useContext(ThemeContext)
+    const { currentTheme, changeCurrentTheme } = useContext(ThemeContext);
 
     return (
         <button
-            style={{
-                padding: 5,
-                borderRadius: 5,
-                color: currentTheme === 'light' ? 'white' : 'black',
-                background: currentTheme === 'light' ? 'black' : 'white',
-            }}
+            className="p-2 rounded-md bg-white  dark:bg-zinc-700 ml-4 border border-md w-10 h-10 flex items-center justify-center"
             onClick={() => changeCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')}
         >
-            Go {currentTheme === 'light' ? 'DARK' : 'LIGHT'} MODE
+            {currentTheme === 'light' ? <FiSun /> : <FiMoon />}
         </button>
-    )
-}
+    );
+};
 
-export default ThemeSwitch
+export default ThemeSwitch;
