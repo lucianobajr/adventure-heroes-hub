@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Logo from "../../assets/logo-with-name.svg"
+import Logo from "../../assets/svgs/logo-with-name.svg"
 
 import { motion } from "framer-motion";
 import { Button } from '@/components/ui/button';
