@@ -26,7 +26,7 @@ const ModalBattle: React.FC<ModalBattleProps> = ({ closeModal, heroes }) => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-80 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg w-auto">
+      <div className="bg-white p-8 rounded-lg w-auto mx-3">
 
         <div className="flex flex-col justify-between mb-4 items-center">
           <h3 className="text-6xl font-roboto-slab font-semibold text-center"><span className="underline underline-offset-3 decoration-8 decoration-main dark:dark-main">{resultMessage}</span></h3>
@@ -36,7 +36,7 @@ const ModalBattle: React.FC<ModalBattleProps> = ({ closeModal, heroes }) => {
               <img
                 src={heroes[0].images.large}
                 alt={heroes[0].name}
-                className="w-72 h-96 rounded-sm"
+                className="w-72 h-96 rounded-sm hidden md:block overflow-x-hidden overflow-y-hidden"
               />
               <span className="text-2xl font-semibold ml-2">{heroes[0].name}</span>
             </div>
@@ -46,7 +46,7 @@ const ModalBattle: React.FC<ModalBattleProps> = ({ closeModal, heroes }) => {
               <img
                 src={heroes[1].images.large}
                 alt={heroes[1].name}
-                className="w-72 h-96 rounded-sm"
+                className="w-72 h-96 rounded-sm hidden md:block overflow-x-hidden overflow-y-hidden"
               />
             </div>
           </div>
