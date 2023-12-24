@@ -2,7 +2,13 @@ import React from 'react';
 
 
 import { IPokemonCard } from '@/interfaces/pokemon/pokemon-card';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+
+import { Card } from '@/components/atoms/card';
+import { CardContent } from '@/components/atoms/card-content';
+import { CardFooter } from '@/components/atoms/card-footer';
+import { CardHeader } from '@/components/atoms/card-header';
+import { CardTitle } from '@/components/atoms/card-title';
+
 import { GiPowerLightning } from "react-icons/gi";
 
 interface PokemonCardProps {
@@ -23,7 +29,6 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ card, selected, selectCard })
             <CardFooter className='font-roboto-slab flex'>
                 <GiPowerLightning className='w-5 h-5 text-main mr-2' />
                 <p>{card.hp}</p>
-
             </CardFooter>
         </Card>
     );

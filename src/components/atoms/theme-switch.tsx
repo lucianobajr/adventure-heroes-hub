@@ -1,6 +1,9 @@
 import type { FC } from 'react';
+
 import { useContext } from 'react';
+
 import ThemeContext from '../../contexts/theme/ThemeContext';
+
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 const ThemeSwitch: FC = () => {
