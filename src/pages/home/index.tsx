@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import Logo from "../../assets/logo.svg"
-import { ThemeSwitch } from '../../components';
+
+import { PokemonCard, ThemeSwitch } from '../../components';
 import { Button } from '@/components/ui/button';
 
 import { useAuth } from "../../contexts/auth/AuthContext";
@@ -8,12 +10,55 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 import { FiLogOut } from "react-icons/fi"
+import { IPokemonCard } from '@/interfaces/pokemon/pokemon-card';
+import { api } from '@/services/api';
+import { Skeleton } from '@/components/ui/skeleton';
+
+import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
+    const [loading, setIsLoading] = useState(false);
+    const [cards, setCards] = useState<IPokemonCard[]>([]);
+
+    const [selectedCards, setSelectedCards] = useState<IPokemonCard[]>([]);
+
+    // Função para selecionar um card
+    const selectCard = (selectedCard: IPokemonCard) => {
+        // Verifica se o card já está na seleção
+        const isCardSelected = selectedCards.some(
+            (card) => card.id === selectedCard.id
+        );
+
+        // Se já estiver selecionado, remove da seleção
+        if (isCardSelected) {
+            setSelectedCards((prevSelected) =>
+                prevSelected.filter((card) => card.id !== selectedCard.id)
+            );
+        } else if (selectedCards.length < 2) {
+            // Adiciona o novo card à seleção
+            setSelectedCards((prevSelected) => [...prevSelected, selectedCard]);
+        }
+    };
+
 
     const { signOut, user } = useAuth();
 
-    console.log(user.user.nickname)
+    useEffect(() => {
+        async function fetchCards() {
+            setIsLoading(true)
+            try {
+                const { data } = await api.get('/cards');
+                setCards(data.data);
+            } catch (error) {
+                alert("erro!")
+            }
+            finally {
+                setIsLoading(false);
+            }
+        }
+
+        fetchCards()
+    }, []);
 
     return (
         <div className='w-full font-sans flex flex-col dark:bg-zinc-700 dark:text-white'>
@@ -28,7 +73,7 @@ const Home: React.FC = () => {
                                         <AvatarImage src={`https://ui-avatars.com/api/name=${user.user.nickname}?background=D23A2E&color=fff&size=128&rounded=true`} alt={`${user.user.nickname} Avatar`} />
                                         <AvatarFallback>CN</AvatarFallback>
                                     </Avatar>
-                                    </Button>
+                                </Button>
                             </PopoverTrigger>
                             <PopoverContent className="w-64 flex flex-col">
                                 <div className='flex items-center'>
@@ -47,9 +92,37 @@ const Home: React.FC = () => {
 
 
 
-            <div className="min-h-screen" style={{ minHeight: 'calc(100vh - 4rem)' }}>
+            <div className="min-h-screen pb-4" style={{ minHeight: 'calc(100vh - 4rem)' }}>
+
                 <div className="container">
-                    <p>Ola</p>
+
+                    <div className='w-full mt-6 flex flex-row flex-wrap items-center justify-center xs:gap-4'>
+                        {!!loading ? (
+                            Array.from({ length: 10 }).map((_, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: -50 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                                >
+                                    <Skeleton className="w-80 h-96" />
+                                </motion.div>
+                            ))
+                        ) : (
+                            cards.map((card, index) => (
+                                <motion.div
+                                    key={card.id}
+                                    initial={{ opacity: 0, y: -50 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1, duration: 0.5 }}
+
+                                >
+                                    <PokemonCard card={card} selected={selectedCards.includes(card) ? true : false} selectCard={selectCard} />
+
+                                </motion.div>
+                            ))
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
