@@ -2,6 +2,8 @@
 
 🦹‍♀️🧙‍♀️ A plataforma **Adventure Heroes Hub** reúne heróis em jornadas épicas e aventuras incríveis! 🦸‍♂️✨
 
+![2023-12-24-20-17-53-_online-video-cutter com_](https://github.com/lucianobajr/adventure-heroes-hub/assets/45442173/6169b164-1ef5-4015-b346-86797634ba82)
+
 ## Descrição
 
 O **Adventure Heroes Hub** é um aplicativo que oferece uma experiência envolvente para os fãs de Pokémon, permitindo a seleção de dois Pokémon para uma batalha emocionante. O aplicativo utiliza a abordagem de design Atomic Design para organizar seus componentes de forma escalável e estruturada.
